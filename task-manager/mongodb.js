@@ -19,19 +19,9 @@ MongoClient.connect(
     console.log("MongoDB Connected...");
     const db = client.db(databaseName);
 
-    db.collection("tasks").findOne(
-      {
-        _id: new ObjectID("5f0c7cc07a3c770954471111"),
-      },
-      (err, res) => {
-        console.log(res);
-      }
-    );
-
-    db.collection("tasks")
-      .find({ completed: true })
-      .toArray((err, res) => {
-        console.log(res);
-      });
+    db.collection("users")
+      .deleteMany({ age: 23 })
+      .then((res) => console.log("Success"))
+      .catch((err) => console.log("fail"));
   }
 );
